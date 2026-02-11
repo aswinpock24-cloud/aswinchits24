@@ -1,0 +1,42 @@
+services:
+  # Backend FastAPI Service
+  - type: web
+    name: chit-fund-backend
+    env: docker
+    repo: https://github.com/USER/REPO_NAME # User needs to replace this
+    plan: free
+    region: singapore
+    dockerContext: backend
+    dockerfilePath: backend/Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: chitfund-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "60"
+
+  # Frontend Static Site
+  - type: static
+    name: chit-fund-frontend
+    repo: https://github.com/USER/REPO_NAME # User needs to replace this
+    plan: free
+    region: singapore
+    publishPath: frontend
+    headers:
+      - path: /*
+        name: Access-Control-Allow-Origin
+        value: "*"
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://chit-fund-backend.onrender.com/api/* # User needs to match backend name
+
+databases:
+  - name: chitfund-db
+    plan: free
+    region: singapore
