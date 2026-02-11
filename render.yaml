@@ -3,7 +3,7 @@ services:
   - type: web
     name: chit-fund-backend
     env: docker
-    repo: https://github.com/USER/REPO_NAME # User needs to replace this
+    repo: https://github.com/aswinpock24-cloud/aswinchits24.git
     plan: free
     region: singapore
     dockerContext: backend
@@ -23,7 +23,7 @@ services:
   # Frontend Static Site
   - type: static
     name: chit-fund-frontend
-    repo: https://github.com/aswinpock24-cloud/aswinchits24.git # User needs to replace this
+    repo: https://github.com/aswinpock24-cloud/aswinchits24.git
     plan: free
     region: singapore
     publishPath: frontend
