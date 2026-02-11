@@ -21,8 +21,9 @@ services:
         value: "60"
 
   # Frontend Static Site
-  - type: static
+  - type: web
     name: chit-fund-frontend
+    env: static
     repo: https://github.com/aswinpock24-cloud/aswinchits24.git
     plan: free
     region: singapore
