@@ -29,10 +29,6 @@ services:
     region: singapore
     dockerContext: frontend
     dockerfilePath: frontend/Dockerfile
-    routes:
-      - type: rewrite
-        source: /api/*
-        destination: https://chit-fund-backend.onrender.com/api/*
 
 databases:
   - name: chitfund-db
