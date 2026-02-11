@@ -6,7 +6,7 @@ services:
     repo: https://github.com/aswinpock24-cloud/aswinchits24.git
     plan: free
     region: singapore
-    dockerContext: backend
+    dockerContext: .
     dockerfilePath: backend/Dockerfile
     envVars:
       - key: DATABASE_URL
@@ -27,7 +27,7 @@ services:
     repo: https://github.com/aswinpock24-cloud/aswinchits24.git
     plan: free
     region: singapore
-    dockerContext: frontend
+    dockerContext: .
     dockerfilePath: frontend/Dockerfile
 
 databases:
