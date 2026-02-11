@@ -20,22 +20,19 @@ services:
       - key: ACCESS_TOKEN_EXPIRE_MINUTES
         value: "60"
 
-  # Frontend Static Site
+  # Frontend Service (Docker-based for reliability)
   - type: web
     name: chit-fund-frontend
-    env: static
+    env: docker
     repo: https://github.com/aswinpock24-cloud/aswinchits24.git
     plan: free
     region: singapore
-    publishPath: frontend
-    headers:
-      - path: /*
-        name: Access-Control-Allow-Origin
-        value: "*"
+    dockerContext: frontend
+    dockerfilePath: frontend/Dockerfile
     routes:
       - type: rewrite
         source: /api/*
-        destination: https://chit-fund-backend.onrender.com/api/* # User needs to match backend name
+        destination: https://chit-fund-backend.onrender.com/api/*
 
 databases:
   - name: chitfund-db
